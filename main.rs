@@ -34,7 +34,7 @@
          
          
          
-            println!(" d-_-P The server is ready to accept requests at {}:{}", rustrocket_local_ip, rustrocket_local_port);
+            println!(" d-_-P The server is ready to accept requests at {}:{}/api/healthchecker", rustrocket_local_ip, rustrocket_local_port);
          
          
             rocket::build().manage(app_data).mount(
