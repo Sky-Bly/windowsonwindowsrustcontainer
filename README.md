@@ -1,5 +1,14 @@
-# Windows Containers on Windows VM from a Linux Host Guide
-## Use Case: Working with Windows Containers from a Windows VM in Libvirtd/KVM
+## Windows Containers on Windows VM from a Linux Host Guide
+This guide is intended for anyone with a use case where they have a Linux host and would like to do development work for Windows Containers from a Windows Host, the example given has a rust Rocket API example provided.
+
+______________________
+```
+Linux Host
+       ↳---> Windows VM
+                  ↳-----> Windows Container
+                            [Application]
+```
+______________________
  
 ### Prerequisites
 - A functional Linux host with libvirtd and nested virtualization enabled.
@@ -46,19 +55,17 @@ Start-Process "U:\utm-guest-tools-0.*.exe"
 ```
 4. Complete the installation and restart the VM.
  
-## Install Chocolatey Package Manager
+## Install Chocolatey Package Manager and Git
  
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
  
-## Install Git 
- 
 ```powershell
 choco install git.install --params "/GitAndUnixToolsOnPath" -y
 ```
  
-## Enable WSL2 and Hyperv Features
+## Enable WSL2 and HyperV
  
 ```powershell
 choco install wsl2 -y
@@ -66,7 +73,7 @@ wsl --update
 Enable-WindowsOptionalFeature -Online -FeatureName containers –All
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
-1. A reboot may be needed here
+A reboot may be needed here
  
 ## Install Docker Desktop for Windows Containers
  
@@ -90,7 +97,7 @@ Start-Process .\DockerDesktopInstaller.exe -Verb RunAs
 4. Disable resource saver under resources settings.
 5. Right click the Docker Desktop TaskTray icon and change the service to run Windows Containers
  
-## Run Windows Container with Chocolatey
+## Run a Windows Container pre-packaged with Chocolatey and dotnet4.8
  
 ```bash
 docker run -it -p 11000:11000 -p 11001:11001 -p 11002:11002 -p 11003:11003 -p 11004:11004 amitie10g/chocolatey:ltsc2022 powershell
