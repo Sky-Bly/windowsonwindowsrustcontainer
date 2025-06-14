@@ -23,7 +23,7 @@ qemu-img convert -f vmdk WinDev2407Eval-disk1.vmdk -O raw output.raw
 5. Select or Create custom Storage: Manage > select **output.raw** file that was converted in previous step.
 6. Create the VM and start it
  
-## Remove VMware User Process from Windows VM Registry
+## Remove VMware Tools from Windows VM Registry, setup KVM Tools
 
 1. Once in the VM we can remove VMware Tools that was pre-packaged in the image and install the KVM video driver
 ```powershell
