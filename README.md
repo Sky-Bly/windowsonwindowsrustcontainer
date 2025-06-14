@@ -172,7 +172,13 @@ sed -i 's/8000/11001/g' .\Todo.postman_collection.json
 echo "[server]
 port = 11001" | Out-File -FilePath Rocket.toml -Encoding UTF8
 ```
-4. Build and run the application:
+4. Download modified main.rs 
+```
+mv .\src\main.rs .\src\backup_main.rs
+$ProgressPreference = 'SilentlyContinue'
+Invoke-WebRequest -Uri https://github.com/Sky-Bly/windowsonwindowsrustcontainer/raw/refs/heads/main/main.rs -OutFile .\src\main.rs
+```
+5. Build and run the application:
 ```bash
 cargo r -r
 ```
