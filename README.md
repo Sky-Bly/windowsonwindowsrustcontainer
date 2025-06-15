@@ -87,7 +87,7 @@ Invoke-WebRequest -Uri https://desktop.docker.com/win/stable/Docker%20Desktop%20
 ```bash
 Start-Process .\DockerDesktopInstaller.exe -Verb RunAs
 ```
-3. Select the options to run Windows Containers and to use WSL2
+3. Select the options to run **Windows Containers** and to use **WSL2**
  
 ## Configure Docker Desktop
  
@@ -95,15 +95,15 @@ Start-Process .\DockerDesktopInstaller.exe -Verb RunAs
 2. Navigate to settings (gear icon) > Docker Engine.
 3. Set experimental mode to **true**, apply changes, and restart.
 4. Disable resource saver under resources settings.
-5. Right click the Docker Desktop TaskTray icon and change the service to run Windows Containers
+5. Right click the Docker Desktop **TaskTray icon** and change the service to **run Windows Containers**
  
-## Run a Windows Container pre-packaged with Chocolatey and dotnet4.8
+## Download+Run a Windows Container pre-packaged with Chocolatey and dotnet4.8
  
 ```bash
 docker run -it -p 11000:11000 -p 11001:11001 -p 11002:11002 -p 11003:11003 -p 11004:11004 amitie10g/chocolatey:ltsc2022 powershell
 ```
  
-## Install Rust and Build Tools inside the Windows Container
+## Install Rust and Build Tools from inside the Windows Container
  
 ### Steps:
 1. Install Rustup:
